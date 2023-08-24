@@ -29,22 +29,22 @@ public class Events {
     private int participans;
 
 
-    @ManyToMany
-    @JoinTable(
-            name="user_subscriptions",
-            joinColumns = { @JoinColumn(name = "user_ids") },
-            inverseJoinColumns = { @JoinColumn(name = "enent_id") }
-    )
-    private Set<Events> eventsList = new HashSet<>();
-
-
-    @ManyToMany
-    @JoinTable(
-            name="user_subscriptions",
-            joinColumns = { @JoinColumn(name = "enent_id") },
-            inverseJoinColumns = { @JoinColumn(name = "user_ids") }
-    )
-    private Set<Events> usersList = new HashSet<>();
+//    @ManyToMany
+//    @JoinTable(
+//            name="user_subscriptions",
+//            joinColumns = { @JoinColumn(name = "user_ids") },
+//            inverseJoinColumns = { @JoinColumn(name = "enent_id") }
+//    )
+//    private Set<Events> eventsList = new HashSet<>();
+//
+//
+//    @ManyToMany
+//    @JoinTable(
+//            name="user_subscriptions",
+//            joinColumns = { @JoinColumn(name = "enent_id") },
+//            inverseJoinColumns = { @JoinColumn(name = "user_ids") }
+//    )
+//    private Set<Events> usersList = new HashSet<>();
 
     public Events(String title, String content, String adress, int participans) {
         this.title = title;
