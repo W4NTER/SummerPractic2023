@@ -96,19 +96,19 @@ public class Events {
         this.participans = participans;
     }
 
-    public Set<Events> getEventsList() {
-        return eventsList;
-    }
-
-    public void setEventsList(Set<Events> eventsList) {
-        this.eventsList = eventsList;
-    }
-
-    public Set<Events> getUsersList() {
-        return usersList;
-    }
-
-    public void setUsersList(Set<Events> usersList) {
-        this.usersList = usersList;
-    }
+//    public Set<Events> getEventsList() {
+//        return eventsList;
+//    }
+//
+//    public void setEventsList(Set<Events> eventsList) {
+//        this.eventsList = eventsList;
+//    }
+//
+//    public Set<Events> getUsersList() {
+//        return usersList;
+//    }
+//
+//    public void setUsersList(Set<Events> usersList) {
+//        this.usersList = usersList;
+//    }
 }
