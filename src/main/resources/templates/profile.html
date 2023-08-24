@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html charset=UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+          integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js">
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+
+<div class="container mt-5">
+    <h1>Содержание профиля</h1>
+    <div class="container mt-5">
+        <h1>Типа профиль</h1>
+    </div>
+    <div th:if="${message}">You already complete it</div>
+    <div>
+        <form action="/profile" method="post">
+            <input type="text" name="name" placeholder="Ведите имя"/>
+            <input type="text" name="age" placeholder="Введите возраст"/>
+            <input type="text" name="sport" placeholder="Введите вид спорта"/>
+            <input type="text" name="level_sport" placeholder="Сколько лет занимаетесь?"/>
+<!--            <input type="hidden" name="_csrf" value="{{_csrf.token}}" />-->
+            <button type="submit">Добавить</button>
+        </form>
+    </div>
+    <div th:each="el : ${interests}" class="alert alert-info mt-2">
+
+        <h3>Имя: <a th:text="${el.name}"/></h3>
+        <h3>Возраст: <a th:text="${el.age}" /></h3>
+        <h3>Вид спорта: <a th:text="${el.sport}"/></h3>
+        <h3>Уровень владения: <a th:text="${el.level_sport}"/></h3>
+
+    </div>
+</div>
+
+<footer th:insert="blocks/footer :: footer"></footer>
+
+</body>
+</html>
