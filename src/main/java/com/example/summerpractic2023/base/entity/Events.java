@@ -1,7 +1,6 @@
 package com.example.summerpractic2023.base.entity;
 
 import jakarta.persistence.*;
-import org.thymeleaf.spring6.processor.SpringOptionInSelectFieldTagProcessor;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -13,7 +12,7 @@ public class Events {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private int id;
+    private Long id;
 
 
     @Column(name = "title")
@@ -28,12 +27,18 @@ public class Events {
     @Column(name = "participants")
     private int participans;
 
+    private String filename;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "author_id")
+    private User author;
+
 
 //    @ManyToMany
 //    @JoinTable(
 //            name="user_subscriptions",
 //            joinColumns = { @JoinColumn(name = "user_ids") },
-//            inverseJoinColumns = { @JoinColumn(name = "enent_id") }
+//            inverseJoinColumns = { @JoinColumn(name = "event_id") }
 //    )
 //    private Set<Events> eventsList = new HashSet<>();
 //
@@ -41,12 +46,13 @@ public class Events {
 //    @ManyToMany
 //    @JoinTable(
 //            name="user_subscriptions",
-//            joinColumns = { @JoinColumn(name = "enent_id") },
+//            joinColumns = { @JoinColumn(name = "event_id") },
 //            inverseJoinColumns = { @JoinColumn(name = "user_ids") }
 //    )
 //    private Set<Events> usersList = new HashSet<>();
 
-    public Events(String title, String content, String adress, int participans) {
+    public Events(User user ,String title, String content, String adress, int participans) {
+        this.author = user;
         this.title = title;
         this.content = content;
         this.adress = adress;
@@ -56,11 +62,12 @@ public class Events {
     public Events() {
     }
 
-    public int getId() {
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -96,7 +103,23 @@ public class Events {
         this.participans = participans;
     }
 
-//    public Set<Events> getEventsList() {
+    public String getFilename() {
+        return filename;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
+    }
+
+    public User getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(User masterKeyEvent) {
+        this.author = masterKeyEvent;
+    }
+
+//        public Set<Events> getEventsList() {
 //        return eventsList;
 //    }
 //

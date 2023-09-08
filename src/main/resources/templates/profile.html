@@ -14,7 +14,7 @@
     <div class="container mt-5">
         <h1>Типа профиль</h1>
     </div>
-    <div th:if="${message}">You already complete it</div>
+    <div th:if="${message}"><a th:text="${message}"/></div>
     <div>
         <form action="/profile" method="post">
             <input type="text" name="name" placeholder="Ведите имя"/>
@@ -31,6 +31,20 @@
         <h3>Возраст: <a th:text="${el.age}" /></h3>
         <h3>Вид спорта: <a th:text="${el.sport}"/></h3>
         <h3>Уровень владения: <a th:text="${el.level_sport}"/></h3>
+        <a th:href="'/profile/editProfile' + '/' + ${el.id}" class="btn btn-warning">Изменить</a>
+
+    </div>
+
+    <h3>Ваши мероприятия:</h3>
+    <div th:each="elem : ${events_view}" class="alert alert-info mt-2">
+        <h3>Название: <a th:text="${elem.title}"/></h3>
+        <h3>Описание: <a th:text="${elem.content}" /></h3>
+        <h3>Адрес мероприятия: <a th:text="${elem.adress}"/></h3>
+        <h3>Количество участников: <a th:text="${elem.participans}"/></h3>
+        <a th:href="'/profile/edit' + '/' + ${elem.id}" class="btn btn-warning">Изменить</a>
+        <form th:action="'/profile/remove' + '/' + ${elem.id}" method="post">
+            <br><button class="btn btn-warning" type="submit">Удалить</button>
+        </form>
 
     </div>
 </div>
